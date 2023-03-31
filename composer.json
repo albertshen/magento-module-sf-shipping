@@ -1,5 +1,5 @@
 {
-    "name": "albertshen/magento-module-webapi",
+    "name": "albertshen/magento-module-sf-shipping",
     "description": "N/A",
     "type": "magento2-module",
     "license": [
@@ -21,7 +21,7 @@
             "registration.php"
         ],
         "psr-4": {
-            "AlbertMage\\Webapi\\": ""
+            "AlbertMage\\SfShipping\\": ""
         }
     }
 }

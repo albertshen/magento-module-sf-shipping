@@ -4,4 +4,4 @@
  */
 use Magento\Framework\Component\ComponentRegistrar;
 
-ComponentRegistrar::register(ComponentRegistrar::MODULE, 'AlbertMage_Webapi', __DIR__);
+ComponentRegistrar::register(ComponentRegistrar::MODULE, 'AlbertMage_SfShipping', __DIR__);
