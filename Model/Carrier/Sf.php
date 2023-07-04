@@ -15,7 +15,7 @@ use Magento\Quote\Model\Quote\Address\RateResult\MethodFactory;
 class Sf extends AbstractCarrier implements CarrierInterface
 {
  
-    protected $_code = 'sf';
+    protected $_code = 'sfshipping';
  
     protected $rateResultFactory;
  
@@ -45,27 +45,35 @@ class Sf extends AbstractCarrier implements CarrierInterface
         if (!$this->getConfigFlag('active')) {
             return false;
         }
- 
+
         /** @var \Magento\Shipping\Model\Rate\Result $result */
         $result = $this->rateResultFactory->create();
  
         /** @var \Magento\Quote\Model\Quote\Address\RateResult\Method $method */
         $method = $this->rateMethodFactory->create();
  
-        $method->setCarrier('sf');
+        $method->setCarrier($this->_code);
         $method->setCarrierTitle($this->getConfigData('title'));
  
-        $method->setMethod('sf');
+        $method->setMethod($this->_code);
         $method->setMethodTitle($this->getConfigData('name'));
  
         /*you can fetch shipping price from different sources over some APIs, we used price from config.xml - xml node price*/
-        $amount = $this->getConfigData('price');
+
+        $amount = $request->getFreeShipping() ? 0 : $this->getConfigData('price');
+
         $shippingPrice = $this->getFinalPriceWithHandlingFee($amount);
         $method->setPrice($shippingPrice);
         $method->setCost($amount);
  
         $result->append($method);
  
+
         return $result;
+    }
+    
+    public function isTrackingAvailable()
+    {
+        return true;
     }
 }

@@ -3,7 +3,7 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
         <carriers>
-            <custom>
+            <sfshipping>
                 <active>1</active>
                 <sallowspecific>0</sallowspecific>
                 <model>AlbertMage\SfShipping\Model\Carrier\Sf</model>
@@ -13,7 +13,7 @@
                 <title>Sf Method</title>
                 <type>I</type>
                 <specificerrmsg>This shipping method is not available right now.</specificerrmsg>
-            </custom>
+            </sfshipping>
         </carriers>
     </default>
 </config>
